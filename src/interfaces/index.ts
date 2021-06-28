@@ -8,13 +8,13 @@ interface PokemonType {
   type: NamedAPIResource;
 }
 
-interface PokemonSprites {
+interface ItemSprites {
   front_default: string;
 }
 
 export interface Pokemon {
-  id: string;
+  id: number;
   name: string;
-  sprites: PokemonSprites[];
+  sprites: ItemSprites;
   types: PokemonType[];
 }

@@ -27,7 +27,7 @@ function App() {
   function handleSearch() {
     if (inputValue) {
       const filteredList = pokemonList.filter(pokemon => {
-        return pokemon.name.includes(inputValue);
+        return pokemon.name.includes(inputValue.toLowerCase());
       });
 
       setFilteredPokemonList(filteredList);

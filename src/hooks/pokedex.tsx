@@ -2,6 +2,8 @@ import React, { createContext, useState, useRef, useEffect, useCallback, useCont
 
 import { NamedAPIResource, Pokemon } from '../interfaces';
 
+const API_URL = 'https://pokeapi.co/api/v2/pokemon/';
+
 interface Pokedex {
   fetchingPokemonList: boolean;
   pokemonList: NamedAPIResource[];
@@ -19,7 +21,7 @@ const PokedexProvider: React.FC = ({ children }) => {
     async function fetchPokemonList(): Promise<void> {
       setFetchingPokemonList(true);
 
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=9999');
+      const response = await fetch(`${API_URL}?limit=9999`);
       const { results } = await response.json();
       setPokemonList(results);
 
@@ -32,7 +34,7 @@ const PokedexProvider: React.FC = ({ children }) => {
   const getPokemonByName = useCallback(async (name: string) => {
     if (!pokemonCache.current.has(name)) {
       const promise = new Promise<Pokemon>(async resolve => {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        const response = await fetch(`${API_URL}${name}`);
         const responseJSON = await response.json();
 
         resolve(responseJSON);

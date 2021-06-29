@@ -1,8 +1,6 @@
-interface Dictionary<T> {
-  [id: string]: T;
-}
+import { PokemonType } from '../constants/enums';
 
-export const colors: Dictionary<string> = {
+export const colors: Record<PokemonType, string> = {
   bug: '#8BD674',
   dark: '#6F6E78',
   dragon: '#7383B9',

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { PokemonType } from '../../constants/enums';
 import { colors } from '../../styles/colors';
 
 interface CardProps {
@@ -12,7 +13,7 @@ export const Card = styled.div<CardProps>`
   padding: 8px 8px 0px 8px;
   border-radius: 16px;
 
-  background-color: ${({ pokemonType }) => colors[pokemonType]};
+  background-color: ${({ pokemonType }) => colors[pokemonType as PokemonType]};
 `;
 
 export const Sprite = styled.img`
